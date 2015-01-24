@@ -1,10 +1,11 @@
 package app
 
 import (
-	"os"
+//	"os"
 	"github.com/megamsys/libgo/action"
 	"github.com/gophergala/gomegam/global"
         "errors"
+	"fmt"
 	log "code.google.com/p/log4go"
 	"github.com/sendgrid/sendgrid-go"
 	"github.com/tsuru/config"
@@ -22,7 +23,8 @@ var analyticsAction = action.Action{
 		default:
 			return nil, errors.New("First parameter must be App or *global.App.")
 		}
-		sendgrid()
+		err := sendGrid()
+                fmt.Println(err)
 	 	return &app, nil
 	},
 	Backward: func(ctx action.BWContext) {
@@ -32,13 +34,22 @@ var analyticsAction = action.Action{
 }
 
 
-func sendgrid() {
+func sendGrid() error {    
+    username, uerr := config.GetString("username")
+    if uerr != nil {
+      log.Error("Error loading user name")
+     }
+     
+    secretkey, serr := config.GetString("secretkey")
+    if serr != nil {
+      log.Error("Error loading secretkey")
+     }
 	
-    sg := sendgrid.NewSendGridClient(os.Getenv("SD_UNAME"), os.Getenv("SD_KEY") )
+    sg := sendgrid.NewSendGridClient(username, secretkey)
     message := sendgrid.NewMail()
     email, kerr := config.GetString("addto:email")
 	if kerr != nil {
-		return "", kerr
+	   return kerr
 	}
 	
 	
@@ -46,17 +57,16 @@ func sendgrid() {
     
     name, kerr := config.GetString("addto:name")
 	if kerr != nil {
-		return "", kerr
+	    return kerr
 	}
     message.AddToName(name)
     message.SetSubject("GoMegam-IoT ")
     message.SetText("Welcome to Gomegam IoT Project")
     message.SetFrom("getyesh@megam.co.in")
-    if r := sg.Send(message); r == nil {
-        fmt.Println("Email sent!")
-    } else {
-        fmt.Println(r)
+    if r := sg.Send(message); r != nil {
+       return r
     }
+  return nil
 }
 
 
