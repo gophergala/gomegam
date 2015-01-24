@@ -17,9 +17,9 @@
 package things
 
 import (
-	"github.com/astaxie/beego"
 	"github.com/gophergala/gomegam/routers/base"
 	"strings"
+	"fmt"
 	"encoding/json"
 	"github.com/gophergala/gomegam/app"
 	"github.com/gophergala/gomegam/global"
@@ -30,6 +30,16 @@ type ThingsRouter struct {
 }
 
 func (this *ThingsRouter) Get() {
+
+    result := map[string]interface{}{
+		"success": false,
+	}
+
+	defer func() {
+		this.Data["json"] = result
+		this.ServeJson()
+	}()
+
     req := this.Ctx.Input.Param(":id")
     data := strings.Split(req, "-")
     
@@ -43,10 +53,10 @@ func (this *ThingsRouter) Get() {
     
     err = app.AnalyticsProcess(&d)
 		if err != nil {
-			fmt.Printf("Error: Analytics process [%s]", serverName)
 			fmt.Println(err)
-			return err
 		}
+  	result["success"] = true
+	result["data"] = string(b)
 }
 
 

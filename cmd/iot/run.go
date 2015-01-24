@@ -5,12 +5,12 @@ import (
 	"launchpad.net/gnuflag"
 )
 
-type CIBStart struct {
+type IOTStart struct {
 	fs *gnuflag.FlagSet
 }
 
-func (g *CIBStart) Info() *cmd.Info {
-	desc := `starts the cib base web daemon.
+func (g *IOTStart) Info() *cmd.Info {
+	desc := `starts the iot base web daemon.
 	
 	
 	`
@@ -22,14 +22,14 @@ func (g *CIBStart) Info() *cmd.Info {
 	}
 }
 
-func (c *CIBStart) Run(context *cmd.Context, client *cmd.Client) error {
+func (c *IOTStart) Run(context *cmd.Context, client *cmd.Client) error {
 	RunWeb()
 	return nil
 }
 
-func (c *CIBStart) Flags() *gnuflag.FlagSet {
+func (c *IOTStart) Flags() *gnuflag.FlagSet {
 	if c.fs == nil {
-		c.fs = gnuflag.NewFlagSet("cib", gnuflag.ExitOnError)
+		c.fs = gnuflag.NewFlagSet("iot", gnuflag.ExitOnError)
 	}
 	return c.fs
 }

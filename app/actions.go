@@ -1,16 +1,15 @@
 package app
 
 import (
-	"fmt"
 	"github.com/megamsys/libgo/action"
-	"github.com/megamsys/libgo/exec"
 	"github.com/gophergala/gomegam/global"
-	"strings"
+        "errors"
+	log "code.google.com/p/log4go"
 )
 
 var analyticsAction = action.Action{
 	Name: "analyticsAction",
-	Forward: func(ctx action.FWContext) error {
+	Forward: func(ctx action.FWContext) (action.Result, error) {
 		var app global.App
 		switch ctx.Params[0].(type) {
 		case global.App:
@@ -20,7 +19,7 @@ var analyticsAction = action.Action{
 		default:
 			return nil, errors.New("First parameter must be App or *global.App.")
 		}
-	 	return nil
+	 	return &app, nil
 	},
 	Backward: func(ctx action.BWContext) {
 		log.Info("[%s] Nothing to recover")

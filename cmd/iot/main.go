@@ -30,11 +30,11 @@ const (
 	header  = "Blockchain API"
 )
 
-const defaultConfigPath = "conf/bca.conf"
+const defaultConfigPath = "conf/iot.conf"
 
 func buildManager(name string) *cmd.Manager {
 	m := cmd.BuildBaseManager(name, version, header)
-	m.Register(&BCAStart{}) 
+	m.Register(&IOTStart{}) 
 	return m
 }
 

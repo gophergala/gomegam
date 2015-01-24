@@ -86,9 +86,6 @@ _iotr:
 	sudo ./iot start
 	rm -f iot
 
-_sh_tests:
-	@conf/trusty/megam/megam_test.sh
-
 test: _go_test _iot _iotr
 
 _install_deadcode: git

@@ -18,7 +18,6 @@
 package base
 
 import (
-	"encoding/json"
 	"github.com/astaxie/beego"
 	"github.com/beego/i18n"
 )

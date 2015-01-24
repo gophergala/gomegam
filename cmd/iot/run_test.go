@@ -5,8 +5,8 @@ import (
 	"launchpad.net/gocheck"
 )
 
-func (s *S) TestCIBStartInfo(c *gocheck.C) {
-	desc := `starts the cib base web daemon.
+func (s *S) TestIOTStartInfo(c *gocheck.C) {
+	desc := `starts the iot base web daemon.
 	
 	
 	`
@@ -16,6 +16,6 @@ func (s *S) TestCIBStartInfo(c *gocheck.C) {
 		Desc:    desc,
 		MinArgs: 0,
 	}
-	command := CIBStart{}
+	command := IOTStart{}
 	c.Assert(command.Info(), gocheck.DeepEquals, expected)
 }
