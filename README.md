@@ -3,6 +3,8 @@
 
 As the name depicts, the project revolves around  Internet of Things(IoT), an umbrella term, which is basically bunch of devices communicating and storing data through the internet.  Every device generates some sort of data all the time, these data if well filtered, can be used for further analysis to get valuable insights.  
 
+![Concept](https://github.com/gophergala/gomegam/blob/master/conf/gomegam.jpg)
+
 ## How can these data be distributed, fail-proof and redundant? 
 
 Say hi to blockchain. We use blockchain, the underlying technology that runs bitcoins to do the job. To put things short, block chain is a technology which is decentralized and distributed, everyone in the network contains all the information about the data when ever there is a new transaction that takes place in the network. This way, we eliminate decentralized system and increase redundancy of data. WIN-WIN.
