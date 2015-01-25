@@ -35,15 +35,34 @@ make test
 
 ```
 
+```
+$ iot
+2015/01/26 03:03:19 Conf: /home/ram/code/gomegam/conf/iot.conf
+2015/01/26 03:03:19 [config.go:284] [W] open /home/ram/code/gomegam/conf/app.conf: no such file or directory 
+iot version 0.1.0.
+
+Usage: iot command [args]
+
+Available commands:
+  help
+  start
+  version
+
+Use iot help <commandname> to get more information about a command.
+
+$ iot start
+
+```
+
 # License
 
 |                      |                                          |
 |:---------------------|:-----------------------------------------|
 | **Author:**          | Rajthilak (<rajthilak@megam.co.in>)
-|                      | Thomas Alrin (<alrin@megam.co.in>)
+|                      | Thomas Alrin (<thomasalrin@megam.co.in>)
 |		       	       | KishorekumarNeelamegam (<nkishore@megam.co.in>)
 |		       	       | Yeshwanth Kumar (<getyesh@megam.co.in>)
-| **Copyright:**       | Copyright (c) 2012-2014 Megam Systems.
+| **Copyright:**       | Copyright (c) 2013-2015 Megam Systems.
 | **License:**         | Apache License, Version 2.0
 
 Licensed under the Apache License, Version 2.0 (the "License");
